@@ -12,3 +12,19 @@ A Python script to download all **10-K** and **10-Q** filings for a list of comp
 ---
 Steps
 ---
+functions to map tickers → CIKs (via SEC's company_tickers.json),
+
+fetching the company's submissions/CIKxxxxx.json and extracting 10-K / 10-Q filings in the requested date window,
+
+building likely SEC archive URLs and downloading the full-submission.htm (with fallbacks),
+
+simple rate limiting (default ~0.12s between requests → stays under the 10 req/sec guidance), retry/backoff logic, logging, and CLI integration (--tickers / --tickers-file, --start, --end, --out, --force).
+---
+Usage reminder:
+---
+
+Run from repository root so imports / PYTHONPATH are consistent:
+PYTHONPATH=backend python3 scripts/download_sec_bulk.py --tickers AAPL MSFT AMZN ...
+
+Set SEC_USER_AGENT environment variable to identify yourself (required by SEC), e.g.:
+export SEC_USER_AGENT="Your Name youremail@example.com"
