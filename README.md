@@ -7,7 +7,7 @@ A Python script to download all **10-K** and **10-Q** filings for a list of comp
 ## 🚀 Features
 - Fetches CIKs automatically for any stock ticker.
 - Downloads full 10-K and 10-Q filings (HTML/iXBRL format).
-- Organizes output neatly under.
+- Organizes output neatly.
 
 ---
 Steps
@@ -19,6 +19,7 @@ fetching the company's submissions/CIKxxxxx.json and extracting 10-K / 10-Q fili
 building likely SEC archive URLs and downloading the full-submission.htm (with fallbacks),
 
 simple rate limiting (default ~0.12s between requests → stays under the 10 req/sec guidance), retry/backoff logic, logging, and CLI integration (--tickers / --tickers-file, --start, --end, --out, --force).
+
 ---
 Usage reminder:
 ---
@@ -28,3 +29,8 @@ PYTHONPATH=backend python3 scripts/download_sec_bulk.py --tickers AAPL MSFT AMZN
 
 Set SEC_USER_AGENT environment variable to identify yourself (required by SEC), e.g.:
 export SEC_USER_AGENT="Your Name youremail@example.com"
+
+---
+Extraction
+---
+From the downloaded htm 10K/Q files, I extract item “1A - Risk Factors" and “7 Management’s Discussion and Analysis of Financial Condition and Results of Operations” from 10K. I extracted Part1  “2 - Management’s Discussion and Analysis of Financial Condition and Results of Operations" and Part2 "1A - Risk Factors"  from 10 Q.
