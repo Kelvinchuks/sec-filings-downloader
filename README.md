@@ -4,7 +4,7 @@ A Python script to download all **10-K** and **10-Q** filings for a list of comp
 
 ---
 
-## 🚀 Features
+## Features
 - Fetches CIKs automatically for any stock ticker.
 - Downloads full 10-K and 10-Q filings (HTML/iXBRL format).
 - Organizes output neatly.
